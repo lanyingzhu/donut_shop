@@ -6,41 +6,99 @@
       // Returns a random integer between min (included) and max (excluded)
       // Using Math.round() will give you a non-uniform distribution!
       function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
+        return Math.floor(Math.random() * (max - min) + 1) + min;
       }
       // creat a calculation and display the number of donuts
-      function DonutShop(location, MinPerHour, MaxPerHour, AvgPerCustomer) {
+      function DonutsShop (location, MinPerHour, MaxPerHour, AvgPerCustomer) {
         this.location = location;
         this.MinPerHour = MinPerHour;
         this.MaxPerHour = MaxPerHour;
         this.AvgPerCustomer = AvgPerCustomer;
 
-        this.numPerHour = function() {
+        this.getDonutsPerHour = function() {
           var numPerHour = Math.floor(this.AvgPerCustomer * getRandomInt(this.MinPerHour, this.MaxPerHour));
           console.log("Shop located in " + this.location + " bakes " + numPerHour + " donuts every hour")
           return numPerHour;
         };
-        this.numPerDay = function() {
-          var numPerDay = 8 * this.numPerHour();
-          console.log("Shop located in " + this.location + " bakes " + numPerDay + " donuts every day")
+        this.getDonutsPerDay = function() {
+         var numPerDay = 8 * this.getDonutsPerHour();
+          console.log("Shop located in " + this.location + " bakes " + numPerDay+ " donuts every day")
         };
       }
-      var shop1 = new DonutShop('Downtown', 8, 43, 4.50);
-      var shop2 = new DonutShop('Capitol Hill', 4, 37, 2.00);
-      var shop3 = new DonutShop('South Lake Union', 9, 23, 6.33);
-      var shop4 = new DonutShop('Wedgewood', 2, 28, 1.25);
-      var shop5 = new DonutShop('Ballard', 8, 58, 3.75);
 
-      shop1.numPerDay();
-      shop2.numPerDay();
-      shop3.numPerDay();
-      shop4.numPerDay();
-      shop5.numPerDay();
+      // Create a DonutMaster object with two methods
+      function DonutMaster() {
+        this.shops = [];
+        this.addShop = function(location, MinPerHour, MaxPerHour, AvgPerCustomer) {
+          // create a shop
+          var shop = new DonutsShop(location, MinPerHour, MaxPerHour, AvgPerCustomer)
+          // add to the list
+            this.shops.push(shop);
+        }
+
+        this.generateReport = function() {
+          // loop all list, with for loop
+          for(var i = 0; i < this.shops.length; i++) {
+            this.shops[i].getDonutsPerDay();
+          }
+        }
+      };
+
+      var shopMaster = new DonutMaster();
+      shopMaster.addShop('Downtown', 8, 43, 4.50);
+      shopMaster.addShop('Capitol Hill', 4, 37, 2.00);
+      shopMaster.addShop('South Lake Union', 9, 23, 6.33);
+      shopMaster.addShop('Wedgewood', 2, 28, 1.25);
+      shopMaster.addShop('Ballard', 8, 58, 3.75);
+      shopMaster.generateReport();
+
     </script>
   </head>
   <body>
+
     <h2 align="center" style="font-family:verdana;font-size:300%">Donut Shop</h1>
-    <image src="donut_shop/donut.jpg"/>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Total donuts per hour </th>
+          <th>Total donuts per day </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Downtown</th>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Capitol Hill</th>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>South Lake Union</th>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Wedgewood</th>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Ballard</th>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <image src="donut.jpg"/>
+
+
   </body>
 
 </html>
