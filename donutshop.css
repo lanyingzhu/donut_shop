@@ -1,38 +1,50 @@
-  h2 {
-         text-align: center;
-         text-shadow: 5px 5px #aa0000;
-         font-family:comic sans ms, verdana;
-         font-size: 300%;
-         color:#ffff00;
-      }
-      table {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 200px;
-        width: 600;
-        box-shadow: 7px 7px 7px #999;
-        border: #aaaaaa solid 2px;
-        border-style: double;
-        padding: 5px;
-        font-family: comic sans ms, verdana;
-        font-size: 20
-      }
-      td {
-        text-align: center;
-        border: grey solid 1px;
-        background-color: #f89bab;
-        color: white;
-      }
+h2 {
+   text-align: center;
+   text-shadow: 5px 5px #aa0000;
+   font-family:comic sans ms, verdana;
+   font-size: 300%;
+   color:#ffff00;
+}
+table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  width: 600;
+  box-shadow: 7px 7px 7px #999;
+  border: #aaaaaa solid 2px;
+  border-style: double;
+  padding: 5px;
+  font-family: comic sans ms, verdana;
+  font-size: 20
+}
+td {
+  text-align: center;
+  border: grey solid 1px;
+  background-color: #f89bab;
+  color: white;
+}
 
-      th {
-        background-color: #66cdaa;
-        color: white;
-        border: grey solid 1px;
-        font-family: "comic sans ms";
-      }
+th {
+  background-color: #66cdaa;
+  color: white;
+  border: grey solid 1px;
+  font-family: "comic sans ms";
+}
 
-      body {
-        background: url('donuts.jpg');
+body {
+  background: url('donuts.jpg');
 
-      }
+}
+
+#location {
+  color: #ff00ff
+}
+
+.max {
+  background-color: #4d98f9;
+}
+
+.num {
+  background-color: #4d98f9;
+}
