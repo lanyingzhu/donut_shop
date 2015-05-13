@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Donuts franchaise</title>
-    <style type="text/css">
+    <style >
       h2 {
          text-align: center;
          text-shadow: 5px 5px #aa0000;
@@ -58,12 +58,12 @@
 
         this.getDonutsPerHour = function() {
           var numPerHour = Math.floor(this.AvgPerCustomer * getRandomInt(this.MinPerHour, this.MaxPerHour));
-          console.log("Shop located in " + this.location + " bakes " + numPerHour + " donuts every hour")
+          console.log("Shop located in " + this.location + " bakes " + numPerHour + " donuts every hour");
           return numPerHour;
         };
         this.getDonutsPerDay = function() {
          var numPerDay = 8 * this.getDonutsPerHour();
-          console.log("Shop located in " + this.location + " bakes " + numPerDay+ " donuts every day")
+          console.log("Shop located in " + this.location + " bakes " + numPerDay+ " donuts every day");
         };
       }
 
@@ -72,18 +72,18 @@
         this.shops = [];
         this.addShop = function(location, MinPerHour, MaxPerHour, AvgPerCustomer) {
           // create a shop
-          var shop = new DonutsShop(location, MinPerHour, MaxPerHour, AvgPerCustomer)
-          // add to the list
+          var shop = new DonutsShop(location, MinPerHour, MaxPerHour, AvgPerCustomer);
+          // add a new DonutShop to the list
             this.shops.push(shop);
-        }
+        };
 
         this.generateReport = function() {
           // loop all list, with for loop
           for(var i = 0; i < this.shops.length; i++) {
             this.shops[i].getDonutsPerDay();
           }
-        }
-      };
+        };
+      }
 
       var shopMaster = new DonutMaster();
       shopMaster.addShop('Downtown', 8, 43, 4.50);
@@ -99,7 +99,7 @@
 
     <h2>Donut Shop</h2>
 
-    <table align="center">
+    <table>
       <thead>
         <tr>
           <th>Location</th>
