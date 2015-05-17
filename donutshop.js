@@ -13,12 +13,13 @@
 
         this.getDonutsPerHour = function() {
           var numPerHour = Math.floor(this.AvgPerCustomer * getRandomInt(this.MinPerHour, this.MaxPerHour));
-          console.log("Shop located in " + this.location + " bakes " + numPerHour + " donuts every hour");
+          //console.log("Shop located in " + this.location + " bakes " + numPerHour + " donuts every hour");
           return numPerHour;
         };
         this.getDonutsPerDay = function() {
-         var numPerDay = 8 * this.getDonutsPerHour();
-          console.log("Shop located in " + this.location + " bakes " + numPerDay+ " donuts every day");
+          var numPerDay = 8 * this.getDonutsPerHour();
+          //console.log("Shop located in " + this.location + " bakes " + numPerDay+ " donuts every day");
+          return numPerDay;
         };
       }
 
