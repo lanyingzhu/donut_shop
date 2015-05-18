@@ -2,14 +2,15 @@ h2 {
    text-align: center;
    text-shadow: 5px 5px #aa0000;
    font-family:comic sans ms, verdana;
-   font-size: 300%;
+   font-size: 200%;
    color:#ffff00;
+   margin-top: 10px;
 }
 table {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 300px;
+  margin-top: 15px;
   width: 800;
   box-shadow: 7px 7px 7px #999;
   border: #aaaaaa solid 2px;
@@ -47,4 +48,29 @@ body {
 
 .num {
   background-color: #4d98f9;
+}
+
+ul {
+  margin-top: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: "comic sans ms";
+  font-style: italic;
+  color: #9862ff;
+}
+
+li {
+  display: inline;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+div#detail {
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "comic sans ms";
+  color: #3aff99;
 }

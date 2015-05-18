@@ -7,19 +7,17 @@
       // creat a calculation and display the number of donuts
       function DonutsShop (location, MinPerHour, MaxPerHour, AvgPerCustomer) {
         this.location = location;
+        this.numPerHour = 0;
+        this.numPerDay = 0;
         this.MinPerHour = MinPerHour;
         this.MaxPerHour = MaxPerHour;
         this.AvgPerCustomer = AvgPerCustomer;
 
         this.getDonutsPerHour = function() {
-          var numPerHour = Math.floor(this.AvgPerCustomer * getRandomInt(this.MinPerHour, this.MaxPerHour));
-          //console.log("Shop located in " + this.location + " bakes " + numPerHour + " donuts every hour");
-          return numPerHour;
+          this.numPerHour = Math.floor(this.AvgPerCustomer * getRandomInt(this.MinPerHour, this.MaxPerHour));
         };
         this.getDonutsPerDay = function() {
-          var numPerDay = 8 * this.getDonutsPerHour();
-          //console.log("Shop located in " + this.location + " bakes " + numPerDay+ " donuts every day");
-          return numPerDay;
+          this.numPerDay = 8 * this.numPerHour;
         };
       }
 
@@ -36,7 +34,9 @@
         this.generateReport = function() {
           // loop all list, with for loop
           for(var i = 0; i < this.shops.length; i++) {
+            this.shops[i].getDonutsPerHour();
             this.shops[i].getDonutsPerDay();
+            console.log("Make " + this.shops[i].numPerHour + " donuts per hour, and make " + this.shops[i].numPerDay + " donuts per day");
           }
         };
       }

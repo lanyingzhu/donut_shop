@@ -14,17 +14,40 @@
     <script>
     $(function(){
       for (var i = 0; i < shopMaster.shops.length; i++) {
+        $("ul").append("<li id='shop" + i + "'>" + shopMaster.shops[i].location + "</li>");
+
         $("tbody").append("<tr id='row"+ i + "'></tr>");
         $("tbody #row"+i).append("<td>" + shopMaster.shops[i].location + "</td>");
-        $("tbody #row"+i).append("<td>" + shopMaster.shops[i].getDonutsPerHour() + "</td>");
-        $("tbody #row"+i).append("<td>" + shopMaster.shops[i].getDonutsPerDay() + "</td>");
+        $("tbody #row"+i).append("<td>" + shopMaster.shops[i].numPerHour + "</td>");
+        $("tbody #row"+i).append("<td>" + shopMaster.shops[i].numPerDay + "</td>");
+
+        $("#shop"+i).on("click", function(){
+          var shopid = this.id.replace("shop", "");
+          var shop = shopMaster.shops[shopid];
+          var msg = "Donut shop located at " + shop.location + ". There are " + shop.numPerHour + " every hour and " + shop.numPerDay + " every day."
+          $("#detail p:first").html(msg);
+          var pos = $(this).offset();
+          $("#detail").offset({top: pos.top+30, left: pos.left});
+          $("#detail").css({"background-color": "#999999", "opacity": 0.9});
+          $("#detail").fadeToggle();
+          $("#detail").fadeToggle(1000);
+        });
       }
+      $("body").click(function(){
+        $("#detail").css({"opacity": 0});
+      });
     }
     );
     </script>
   </head>
 
   <body>
+    <h2>Dount shop</h2>
+    <ul>
+    </ul>
+    <div id="detail">
+      <p></p>
+    </div>
    <table>
       <thead>
         <tr>
