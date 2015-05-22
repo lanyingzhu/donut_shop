@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+
+
+<html>
+
+  <head>
+
+    <title>Donuts Shop</title>
+    <link href="shop.css" type="text/css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="shop.js">
+    </script>
+    <script>
+    $(document).ready(function() {
+      // create shopMaster
+      var shopMaster = new DonutMaster();
+      // create form to input data
+      $("div#form1").append(
+        // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
+        $("<h3/>").text("Create a Donut Shop"),
+        $("<form/>", {
+          action: '#',
+          method: '#'
+        }).append(
+          // Create <form> Tag and Appending in HTML Div form1.
+          $("<input/>", {
+            type: 'text',
+            id: 'location',
+            name: 'locatoin',
+            placeholder: 'shop location:'
+          }), // Creating Input Element With Attribute.
+          $("<input/>", {
+            type: 'number',
+            id: 'minCust',
+            name: 'minCust',
+            placeholder: 'minCust:'
+          }), $("<input/>", {
+            type: 'number',
+            id: 'maxCust',
+            name: 'maxCust',
+            placeholder: 'maxCust:'
+          }), $("<input/>", {
+            type: 'number',
+            id: 'avgPerCust',
+            name: 'avgPerCust',
+            placeholder: 'avgPerCust:'
+          }), $("<input/>", {
+            type: 'number',
+            id: 'hourOp',
+            name: 'hourOp',
+            placeholder: 'hourOp:'
+          }),$("<br/>"), $("<input/>", {
+            type: 'submit',
+            id: 'submit',
+            value: 'Submit'
+          })
+      ));
+
+      $("#submit").on("click", function(e){
+        e.preventDefault();
+        var location = $("#location").val();
+        var MinPerHour = $("#minCust").val();
+        var MaxPerHour = $("#maxCust").val();
+        var AvgPerCust = $("#avgPerCust").val();
+        var hourOp = $("#hourOp").val();
+        shop = shopMaster.addShop(location, MinPerHour, MaxPerHour, AvgPerCust, hourOp);
+        shop.getDonutsPerHour();
+        shop.getDonutsPerDay();
+        drewShop(shop);
+        $("#location").val('');
+        $("#maxCust").val('');
+        $("#minCust").val('');
+        $("#avgPerCust").val('');
+        $("#hourOp").val('');
+      });
+
+      function drewShop(shop) {
+        var detail = "shop located at " + shop.location + " produces " + shop.numPerHour + " donuts per hour and " + shop.numPerDay + " donuts per day."
+        $("ul").append(
+          $("<li/>", {
+            id: 'shop' + shop.id,
+            text: shop.location,
+          }).append(
+            $("<div/>", {
+              class: "detail",
+              style: "display: none"
+            }).append("<p/>").text(detail)));
+
+        $("tbody").append("<tr id='row"+ shop.id + "'></tr>");
+        $("tbody #row"+shop.id).append("<td>" + shop.location + "</td>");
+        $("tbody #row"+shop.id).append("<td>" + shop.numPerHour + "</td>");
+        $("tbody #row"+shop.id).append("<td>" + shop.numPerDay + "</td>");
+        $("li#shop"+shop.id).on("click", function(){
+          var detail_block = $(this).find("div.detail");
+          detail_block.slideToggle(500);
+        });
+      };
+    });
+    </script>
+  </head>
+
+  <body>
+    <h2>Dount shop</h2>
+    <div id="container">
+      <div id="form1">
+      <!-- Dynamic Form Div -->
+      </div>
+
+      <div id="list">
+        <table>
+          <thead>
+            <tr>
+              <th>Location</th>
+              <th>Total donuts per hour </th>
+              <th>Total donuts per day </th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="menu">
+        <ul>
+        </ul>
+      </div>
+    </div>
+
+  </body>
+
+</html>
